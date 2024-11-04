@@ -1,70 +1,78 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Chatlive Frontend
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Chatlive Frontend est une application de chat en temps réel qui offre une interface utilisateur pour les clients et les agents, intégrant des suggestions d'IA fournies par OpenAI. Ce projet utilise React pour le développement de l'interface utilisateur, avec Socket.IO pour la communication en temps réel.
 
-### `npm start`
+## Structure du Projet
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Voici la structure actuelle du projet, avec une description de chaque dossier et fichier.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **frontend/**
+  - **public/**
+    - `index.html` : Fichier HTML principal.
+  - **src/**
+    - **components/**
+      - `ClientChat.js` : Interface de chat pour le client.
+      - `AgentChat.js` : Interface de chat pour l'agent.
+    - **services/**
+      - `openaiService.js` : Service pour interagir avec l'API backend pour les suggestions d'IA.
+    - `App.js` : Composant principal de l'application qui configure les routes.
+    - `index.js` : Fichier de démarrage de React.
+  - `package.json` : Fichier de configuration des dépendances et scripts.
 
-### `npm test`
+### Explication des Fichiers
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **`components/ClientChat.js`** : Gère l'interface utilisateur pour le client, permettant d'envoyer et de recevoir des messages.
+- **`components/AgentChat.js`** : Gère l'interface utilisateur pour l'agent, avec des suggestions de réponses basées sur l'IA et des notifications pour les messages clients.
+- **`services/openaiService.js`** : Fichier de service qui communique avec l'API backend pour obtenir des réponses d'IA pour les agents.
+- **`App.js`** : Configure le routage pour les interfaces client et agent, et affiche une page d'accueil avec des liens de navigation.
+- **`index.js`** : Point d'entrée de l'application React.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Suivez ces étapes pour installer et configurer le projet en local.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clonez le dépôt** :
+   ```bash
+   git clone https://github.com/Zhor-Yasmine-Mahdi/Chatlive-frontend.git
+   cd Chatlive-frontend
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Installez les dépendances** :
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+3. **Configurer les variables d'environnement** (si nécessaire) :
+   - Si vous avez des configurations spécifiques, ajoutez-les dans un fichier `.env` à la racine du projet.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Utilisation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Démarrez le serveur de développement** :
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. L'application sera accessible à `http://localhost:3000` par défaut.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## API Endpoints
 
-## Learn More
+Cette application frontend se connecte au backend via l'API suivante pour les suggestions d'IA :
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **`POST /api/chat/ai-response`** : Envoie un message client et reçoit une suggestion de réponse générée par l'IA pour l'agent.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Améliorations Futures
 
-### Code Splitting
+- **Séparation de la Configuration des Sockets** : Actuellement, la configuration des sockets se fait dans les composants `ClientChat.js` et `AgentChat.js`. Une amélioration future consisterait à déplacer cette configuration dans un fichier dédié (par exemple, `config/socket.js`) pour une meilleure modularité.
+- **Gestion des Styles** : Les styles sont actuellement intégrés dans chaque composant. Dans une version future, les styles pourraient être séparés dans des fichiers CSS ou via une solution de style dynamique pour améliorer la maintenabilité.
+- **Tests Unitaires** : Ajouter des tests unitaires pour chaque composant clé afin d'assurer la robustesse de l'application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Dépendances
 
-### Analyzing the Bundle Size
+- **React** : Bibliothèque JavaScript pour construire l'interface utilisateur.
+- **Socket.IO** : Pour la communication en temps réel entre clients et agents.
+- **Axios** : Utilisé pour les appels API au backend.
+- **React Router** : Pour gérer les différentes routes de l'application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
